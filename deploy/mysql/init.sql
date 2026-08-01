@@ -4,16 +4,15 @@ CREATE TABLE IF NOT EXISTS t_note (id BIGINT AUTO_INCREMENT PRIMARY KEY,user_nam
 CREATE TABLE IF NOT EXISTS t_supply_voucher (id BIGINT PRIMARY KEY,title VARCHAR(120) NOT NULL,location_name VARCHAR(80) NOT NULL,stock INT NOT NULL,total INT NOT NULL,end_at TIMESTAMP NOT NULL);
 CREATE TABLE IF NOT EXISTS t_supply_order (id BIGINT AUTO_INCREMENT PRIMARY KEY,user_id BIGINT NOT NULL,voucher_id BIGINT NOT NULL,created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,UNIQUE KEY uk_order_user_voucher(user_id,voucher_id));
 
-INSERT IGNORE INTO t_region VALUES (1,'mondstadt','蒙德','风与自由的诗篇','#68b9b0',1),(2,'liyue','璃月','山海契约与灯火','#c99352',2),(3,'inazuma','稻妻','雷光映照的群岛','#9b78bc',3),(4,'sumeru','须弥','雨林与沙海的智慧','#6f9d63',4),(5,'fontaine','枫丹','水都、艺术与律法','#5d95c9',5);
+INSERT IGNORE INTO t_region VALUES (1,'mondstadt','蒙德','风与自由','#61b6aa',1),(2,'liyue','璃月','山海契约','#c99b52',2),(3,'inazuma','稻妻','雷光群岛','#9a79c7',3),(4,'sumeru','须弥','智慧之国','#72a34f',4),(5,'fontaine','枫丹','水都律法','#5c9dd2',5),(6,'natlan','纳塔','火与竞技','#d5654d',6);
 INSERT IGNORE INTO t_location VALUES
-(101,'mondstadt','风起原野','秘境','沿着湖风穿过高地，适合日落前抵达。','https://images.pexels.com/photos/7232/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1400',4.9,2.4,'风景,徒步,日落',TRUE),
-(102,'liyue','云来山径','地标','层峦与云海交叠的古道，晨雾时最有层次。','https://images.pexels.com/photos/9024240/pexels-photo-9024240.jpeg?auto=compress&cs=tinysrgb&w=1400',4.8,6.8,'云海,古道,摄影',TRUE),
-(103,'inazuma','鸣霞森社','人文','被古木包围的静谧参道，雨后灯影尤其动人。','https://images.pexels.com/photos/9972602/pexels-photo-9972602.jpeg?auto=compress&cs=tinysrgb&w=1400',4.7,8.1,'神社,森林,文化',FALSE),
-(104,'sumeru','赤砂绿洲','秘境','越过沙丘后出现的水与绿荫，是旅途中的惊喜。','https://images.pexels.com/photos/13921909/pexels-photo-13921909.jpeg?auto=compress&cs=tinysrgb&w=1400',4.9,12.6,'沙海,绿洲,探险',TRUE),
-(105,'fontaine','白露水庭','观景','湖畔聚落与远山相映，清晨水面如镜。','https://images.pexels.com/photos/414491/pexels-photo-414491.jpeg?auto=compress&cs=tinysrgb&w=1400',4.6,4.3,'湖泊,小镇,漫步',FALSE),
-(106,'mondstadt','苍风高地','营地','开阔的山脊营地，夜晚可见清晰星空。','https://images.pexels.com/photos/29053372/pexels-photo-29053372.jpeg?auto=compress&cs=tinysrgb&w=1400',4.5,14.2,'露营,星空,高地',FALSE);
+(101,'mondstadt','明冠山地','观景点','在风与自由的国度，越过高地遥望蒙德城与苍蓝湖泊。','/assets/genshin/mondstadt.png',4.9,2.4,'风元素,观景,宝箱',TRUE),
+(102,'liyue','璃月港夜景','地标','万家灯火映着海面，千帆与霄灯共同守望契约之城。','/assets/genshin/liyue.png',4.9,1.8,'岩元素,霄灯,摄影',TRUE),
+(103,'inazuma','鸣神岛','人文','穿过绯樱飘落的参道，登上影向山感受雷光与永恒。','/assets/genshin/inazuma.png',4.8,3.6,'雷元素,绯樱,神社',FALSE),
+(104,'sumeru','须弥雨林','秘境','巨木与智慧之城相映，在兰那罗的故乡寻找森林回声。','/assets/genshin/sumeru.png',4.8,5.2,'草元素,雨林,解谜',TRUE),
+(105,'fontaine','枫丹廷','水都','乘上巡轨船穿越水道，欣赏正义之国宏伟的机械都市。','/assets/genshin/fontaine.png',4.7,2.1,'水元素,巡轨船,潜水',FALSE),
+(106,'natlan','纳塔原野','探索','与龙同行越过炽热原野，在竞技与火焰中书写新的传奇。','/assets/genshin/natlan.png',4.9,6.4,'火元素,龙伙伴,竞技',TRUE);
 INSERT IGNORE INTO t_note(id,user_name,location_name,title,content,image_url,liked) VALUES
-(1,'空谷来客','云来山径','云海散开前的十分钟','六点从山脚出发，穿过石阶后正好遇见第一束光。建议带一壶热茶，风很大，但景色值得。','https://images.pexels.com/photos/9024240/pexels-photo-9024240.jpeg?auto=compress&cs=tinysrgb&w=900',328),
-(2,'薄荷团子','风起原野','在风里收集一整个下午','沿湖的小路几乎没有难度，适合慢慢走。傍晚草坡的颜色会变成金绿色。','https://images.pexels.com/photos/7232/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=900',214);
-INSERT IGNORE INTO t_supply_voucher VALUES (1,'冒险家早餐补给','风起原野',36,100,DATE_ADD(NOW(),INTERVAL 3 DAY)),(2,'云来山径向导券','云来山径',12,50,DATE_ADD(NOW(),INTERVAL 2 DAY));
-
+(1,'空谷来客','璃月港','海灯亮起时，整座港口都在发光','从玉京台一路走到码头，恰好赶上霄灯升空。带一份杏仁豆腐，会是很璃月的夜晚。','/assets/genshin/liyue.png',328),
+(2,'薄荷团子','鸣神岛','在绯樱树下等一场雷雨','沿参道慢慢登山，雨后的绯樱格外明亮。记得顺路采集绯樱绣球。','/assets/genshin/inazuma.png',214);
+INSERT IGNORE INTO t_supply_voucher VALUES (1,'冒险阅历补给','每日委托',36,100,DATE_ADD(NOW(),INTERVAL 3 DAY)),(2,'传送锚点勘测券','七国通用',12,50,DATE_ADD(NOW(),INTERVAL 2 DAY));
