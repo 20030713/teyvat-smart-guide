@@ -24,7 +24,7 @@ management:
     redis:
       enabled: false
 app:
-  cors-origin: ${CORS_ORIGIN:http://localhost:5173}
+  cors-origin: ${CORS_ORIGIN:http://localhost:*,http://127.0.0.1:*}
 
 ---
 spring:
@@ -38,4 +38,3 @@ spring:
   sql:
     init:
       mode: never
-

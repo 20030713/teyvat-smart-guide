@@ -7,7 +7,10 @@ export default defineConfig(({ mode }) => {
     plugins: [vue()],
     server: {
       proxy: {
-        '/api': env.VITE_API_PROXY_TARGET || 'http://localhost:8080'
+        '/api': {
+          target: env.VITE_API_PROXY_TARGET || 'http://localhost:8080',
+          changeOrigin: true
+        }
       }
     }
   }
