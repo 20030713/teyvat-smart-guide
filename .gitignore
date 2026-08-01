@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+*.iml
+.DS_Store
+backend/target/
+frontend/node_modules/
+frontend/dist/
+.env
+*.log
+*.tsbuildinfo
+performance/reports/*
+!performance/reports/.gitkeep
